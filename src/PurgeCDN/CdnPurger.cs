@@ -10,7 +10,7 @@ namespace PurgeCDN
         private static string ApiKey = System.Configuration.ConfigurationManager.AppSettings["PurgeCdnApiKey"];
         private static string PurgeCdnZoneId = System.Configuration.ConfigurationManager.AppSettings["PurgeCdnZoneId"];
         private static string PurgeCdnZoneUrl = System.Configuration.ConfigurationManager.AppSettings["PurgeCdnZoneUrl"];
-        private static string PurgeMethod = System.Configuration.ConfigurationManager.AppSettings["PurgeCdnMethod"];// "tag" or "url"
+        private static string PurgeMethod = System.Configuration.ConfigurationManager.AppSettings["PurgeCdnMethod"];// "tag" or "url" -- default to "url"
 
         public static void PurgeByUrls(string[] urls)
         {
@@ -88,7 +88,7 @@ namespace PurgeCDN
 
         public static bool IsActive()
         {
-            return !String.IsNullOrWhiteSpace(ApiKey) && !String.IsNullOrWhiteSpace(PurgeUrl);
+            return !String.IsNullOrWhiteSpace(ApiKey) && !String.IsNullOrWhiteSpace(PurgeCdnZoneId) && !String.IsNullOrWhiteSpace(PurgeCdnZoneUrl);
         }
     }
 }

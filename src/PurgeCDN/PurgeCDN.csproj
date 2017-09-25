@@ -253,7 +253,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyCdnPurger.cs" />
+    <Compile Include="CdnPurger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\App_Start\PurgeCdnApplicationEventHandler.cs" />
     <Compile Include="Web\Controllers\API\PurgeCdnAPIController.cs" />
@@ -261,6 +261,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Web\App_Plugins\PurgeCdn\js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web\App_Plugins\PurgeCdn\views\purgecdn.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
