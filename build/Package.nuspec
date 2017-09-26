@@ -18,6 +18,9 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\bin\Release\PurgeCDN.dll" target="" />
+    <file src="..\src\bin\Release\PurgeCDN.dll" target="lib\net45" />
+    <file src="..\src\bin\Release\PurgeCDN.pdb" target="lib\net45" />
+	<file src="..\src\Web\App_Plugins\PurgeCdn\**\*" target="content\App_Plugins\PurgeCdn" />
+	
   </files>
 </package>
