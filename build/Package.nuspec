@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>PurgeCDN</id>
+    <version>$version$</version>
+	<title>PurgeCDN for Umbraco</title>
+    <authors>Alex Lindgren</authors>
+    <owners>Alex Lindgren</owners>
+    <licenseUrl>https://github.com/alindgren/cdnpurge/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/alindgren/cdnpurge</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A package which allows editors to purge CDN content in Umbraco 7.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>umbraco keycdn</tags>
+    <dependencies>
+      <dependency id="UmbracoCms.Core" version="7.5.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\bin\Release\PurgeCDN.dll" target="" />
+  </files>
+</package>
