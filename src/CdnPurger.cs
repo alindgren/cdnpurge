@@ -67,7 +67,7 @@ namespace PurgeCDN
 
         public static void PurgeByTag(string[] tags)
         {
-            LogHelper.Info<CdnPurger>("PurgeByTag() called. tag: " + tags);
+            LogHelper.Info<CdnPurger>("PurgeByTag() called. tags: " + String.Join(", ", tags));
             string url = String.Format("https://api.keycdn.com/zones/purgetag/{0}.json", PurgeCdnZoneId);
             var request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "DELETE";

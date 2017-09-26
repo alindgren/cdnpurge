@@ -66,6 +66,13 @@ namespace PurgeCDN.Web.Controllers.API
             {
                 // purge all ("umbhtml")
                 CdnPurger.PurgeByTag(new string[] { "umbhtml" });
+                return new DialogViewModel()
+                {
+                    NodeId = nodeId,
+                    NodeName = "All content",
+                    Status = "purged"
+                };
+
             }
             try
             {
