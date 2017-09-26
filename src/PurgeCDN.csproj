@@ -261,11 +261,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Web\App_Plugins\PurgeCdn\package.manifest" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Web\App_Plugins\PurgeCdn\js\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Web\App_Plugins\PurgeCdn\js\purgecdn.js" />
     <Content Include="Web\App_Plugins\PurgeCdn\views\purgecdn.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

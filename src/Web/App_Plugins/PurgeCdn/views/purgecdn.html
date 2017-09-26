@@ -1,1 +1,25 @@
-﻿<div><h2>Hey</h2></div>
+﻿<div ng-controller="PurgeCDN.Dialog">
+    <div class="umb-dialog-body form-horizontal">
+        <div class="umb-pane">
+
+            <p class="abstract" ng-show="PurgeCdnDialogModel.Status == 'ok'">Do you want to purge
+                <em>{{PurgeCdnDialogModel.NodeName}}</em> from the CDN?
+            </p>
+            <p class="abstract" ng-show="PurgeCdnDialogModel.Status == 'purged'">
+                <em>{{PurgeCdnDialogModel.NodeName}}</em> was purged.
+            </p>
+            <div class="alert alert-error" ng-show="PurgeCdnDialogModel.ErrorMessage">
+                <p style="font-weight:bold">{{PurgeCdnDialogModel.ErrorMessage}}</p>
+            </div>
+
+            <div class="umb-loader-wrapper" ng-show="busy">
+                <div class="umb-loader"></div>
+            </div>
+        </div>
+    </div>
+    <div class="umb-dialog-footer btn-toolbar umb-btn-toolbar">
+        <a class="btn btn-link" ng-click="nav.hideDialog()" ng-show="PurgeCdnDialogModel.Status != 'purged'">Cancel</a>
+        <a class="btn btn-link" ng-click="nav.hideDialog()" ng-show="PurgeCdnDialogModel.Status == 'purged'">Close</a>
+        <button class="btn btn-primary" ng-click="purgeCdn()" ng-show="PurgeCdnDialogModel.Status == 'ok'">Purge CDN</button>
+    </div>
+</div>
