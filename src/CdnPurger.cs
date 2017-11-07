@@ -37,12 +37,11 @@ namespace PurgeCDN
             request.Headers[HttpRequestHeader.Authorization] = string.Format("Basic {0}", ApiKey);
             request.ContentType = "application/json";
             ASCIIEncoding encoding = new ASCIIEncoding();
-            string postData = "{\"urls\":[\"" + PurgeCdnZoneUrl + string.Join("\",\"" + PurgeCdnZoneUrl, urls) + "\"]}";
+            string postData = BuildPostData(purgeCdnZoneUrl, urls);
             byte[] bytes = encoding.GetBytes(postData);
             request.ContentLength = bytes.Length;
             var stream = request.GetRequestStream();
             stream.Write(bytes, 0, bytes.Length);
-            //LogHelper.Debug<CdnPurger>("post data: " + postData);
             LogHelper.Debug<CdnPurger>(postData);
             try
             {
@@ -75,7 +74,7 @@ namespace PurgeCDN
             request.Headers[HttpRequestHeader.Authorization] = string.Format("Basic {0}", ApiKey);
             request.ContentType = "application/json";
             ASCIIEncoding encoding = new ASCIIEncoding();
-            string postData = "{\"urls\":[\"" + PurgeCdnZoneUrl + string.Join("\",\""+ PurgeCdnZoneUrl, tags) + "\"]}";
+            string postData = BuildPostData(tags);
             byte[] bytes = encoding.GetBytes(postData);
             request.ContentLength = bytes.Length;
             var stream = request.GetRequestStream();
@@ -101,6 +100,31 @@ namespace PurgeCDN
             {
                 LogHelper.Error<CdnPurger>("Purge failed for " + String.Join(", ", tags), ex);
             }
+        }
+
+        public static string BuildPostData(string purgeCdnZoneUrl, string[] urls)
+        {
+            string[] list = new string[urls.Length];
+            int counter = 0;
+            foreach (var url in urls)
+            {
+                list[counter] = "\"" + purgeCdnZoneUrl + "/" + url + "\"";
+                counter++;
+            }
+            return "{\"urls\":[" + string.Join(",", list) + "]}";
+        }
+
+
+        public static string BuildPostData(string[] tags)
+        {
+            string[] list = new string[tags.Length];
+            int counter = 0;
+            foreach (var tag in tags)
+            {
+                list[counter] = "\"" + tag + "\"";
+                counter++;
+            }
+            return "{\"tags\":[" + string.Join(",", list) + "]}";
         }
 
         public static bool IsActive()
