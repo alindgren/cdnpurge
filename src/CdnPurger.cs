@@ -42,7 +42,8 @@ namespace PurgeCDN
             request.ContentLength = bytes.Length;
             var stream = request.GetRequestStream();
             stream.Write(bytes, 0, bytes.Length);
-            LogHelper.Debug<CdnPurger>("data: " + postData);
+            //LogHelper.Debug<CdnPurger>("post data: " + postData);
+            LogHelper.Debug<CdnPurger>(postData);
             try
             {
                 request.Timeout = 250;
@@ -51,11 +52,11 @@ namespace PurgeCDN
                     var responseCode = response.StatusCode;
                     if (!responseCode.Equals(HttpStatusCode.OK))
                     {
-                        LogHelper.Info<CdnPurger>("Purge failed. Response: " + response.StatusCode + " - " + response.StatusDescription + " for " + String.Join(", ", urls));
+                        LogHelper.Info<CdnPurger>("Purge failed for " + String.Join(", ", urls) + ".  Response: " + response.StatusCode + " - " + response.StatusDescription);
                     }
                     else
                     {
-                        LogHelper.Info<CdnPurger>("Purge successful. Response: " + response.StatusCode + " - " + response.StatusDescription + " for " + String.Join(", ", urls));
+                        LogHelper.Info<CdnPurger>("Purge successful for " + String.Join(", ", urls) + ".  Response: " + response.StatusCode + " - " + response.StatusDescription);
                     }
                 }
             }
@@ -79,7 +80,7 @@ namespace PurgeCDN
             request.ContentLength = bytes.Length;
             var stream = request.GetRequestStream();
             stream.Write(bytes, 0, bytes.Length);
-            LogHelper.Debug<CdnPurger>("data: " + postData);
+            LogHelper.Debug<CdnPurger>(postData.Replace("{", "{{").Replace("}", "}}"));
             try
             {
                 request.Timeout = 250;
@@ -88,11 +89,11 @@ namespace PurgeCDN
                     var responseCode = response.StatusCode;
                     if (!responseCode.Equals(HttpStatusCode.OK))
                     {
-                        LogHelper.Info<CdnPurger>("Purge failed. Response: " + response.StatusCode + " - " + response.StatusDescription + " for " + String.Join(", ", tags));
+                        LogHelper.Info<CdnPurger>("Purge failed for " + String.Join(", ", tags) +".  Response: " + response.StatusCode + " - " + response.StatusDescription);
                     }
                     else
                     {
-                        LogHelper.Info<CdnPurger>("Purge successful. Response: " + response.StatusCode + " - " + response.StatusDescription + " for " + String.Join(", ", tags));
+                        LogHelper.Info<CdnPurger>("Purge successful for " + String.Join(", ", tags) + ".  Response: " + response.StatusCode + " - " + response.StatusDescription);
                     }
                 }
             }

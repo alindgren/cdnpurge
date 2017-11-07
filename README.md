@@ -15,7 +15,7 @@ Install via nuget.
 
 ## Configuration ##
 
-There are four app settings that need to be added:
+There are five app settings that need to be added:
 
     <add key="PurgeCdn" value="keycdn" />
     <add key="PurgeCdnApiKey" value="API KEY" />
