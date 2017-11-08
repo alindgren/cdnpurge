@@ -65,6 +65,11 @@ namespace PurgeCDN
             }
         }
 
+        public static void PurgeByTag(int nodeId)
+        {
+            PurgeByTag(new string[] { "node-" + nodeId });
+        }
+
         public static void PurgeByTag(string[] tags)
         {
             LogHelper.Info<CdnPurger>("PurgeByTag() called. tags: " + String.Join(", ", tags));
